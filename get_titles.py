@@ -3,6 +3,7 @@ import xml.etree.ElementTree as ET
 import argparse
 email = "tnphung@ucla.edu"
 
+### Credit: this script is adapted from: http://biopython.org/DIST/docs/api/Bio.Entrez-module.html
 def parse_args():
     """
     Parse command-line argument
@@ -38,6 +39,6 @@ def main():
             line = line.split("\t")
             title = get_title(line[1])
             toPrint = [line[0], line[1], title]
-            print >>outfile, ",".join(x for x in toPrint)
+            print >>outfile, ",".join(x for x in toPrint).encode('utf-8').strip()
 main()
 
